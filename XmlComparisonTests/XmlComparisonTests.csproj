@@ -17,4 +17,25 @@
     <ProjectReference Include="..\XmlComparison\XmlComparison.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="SampleFiles\BreakfastMenu-UpperCase.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SampleFiles\BreakfastMenu-Whitespace.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SampleFiles\BreakfastMenu.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SampleFiles\MessagesComments.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SampleFiles\Messages.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SampleFiles\MessagesOrder.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
