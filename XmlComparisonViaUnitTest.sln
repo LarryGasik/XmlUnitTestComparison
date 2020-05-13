@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlComparisonTests", "XmlComparisonTests\XmlComparisonTests.csproj", "{1055710A-A8C0-4119-ACC4-12A75DE8030F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlComparison", "XmlComparison\XmlComparison.csproj", "{BFAEAD66-C8A9-42F4-B96C-F648BCDE3B4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1055710A-A8C0-4119-ACC4-12A75DE8030F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1055710A-A8C0-4119-ACC4-12A75DE8030F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1055710A-A8C0-4119-ACC4-12A75DE8030F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1055710A-A8C0-4119-ACC4-12A75DE8030F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFAEAD66-C8A9-42F4-B96C-F648BCDE3B4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFAEAD66-C8A9-42F4-B96C-F648BCDE3B4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFAEAD66-C8A9-42F4-B96C-F648BCDE3B4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFAEAD66-C8A9-42F4-B96C-F648BCDE3B4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53C5B19F-EE47-4C16-A29E-1F980A73B33D}
+	EndGlobalSection
+EndGlobal
