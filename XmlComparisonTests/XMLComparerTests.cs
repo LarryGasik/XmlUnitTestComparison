@@ -1,6 +1,9 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Xml;
 using NUnit.Framework;
+using XmlComparison;
 
 
 namespace XmlComparisonTests
@@ -8,41 +11,51 @@ namespace XmlComparisonTests
     [TestFixture()]
     public class XmlComparerTests
     {
+        private List<XMLFilters> filters;
+
+        [SetUp]
+        public void SetUp()
+        {
+            filters = new List<XMLFilters>();
+
+        }
+
         [Test]
         public void TheSameFileShouldBeMarkedTheSame()
         {
             string fileName = @"SampleFiles\BreakfastMenu.xml";
-            string  control = LoadXmlIntoStringFromFile(fileName);
+            string control = LoadXmlIntoStringFromFile(fileName);
             string test = control;
-            var result = XmlComparison.XmlComparer.AreXMLDocumentsTheSame(control, test);
+            var result = XmlComparison.XmlComparer.AreXMLDocumentsTheSame(control, test, filters);
             Assert.AreEqual(true, result);
         }
 
         [Test]
-        public void DifferentFilesShouldBeMarkedTheSame()
+        public void DifferentFilesShouldBeMarkedAsDifferent()
         {
             string test = LoadXmlIntoStringFromFile(@"SampleFiles\Messages.xml");
             string control = LoadXmlIntoStringFromFile(@"SampleFiles\BreakfastMenu.xml");
-            var result = XmlComparison.XmlComparer.AreXMLDocumentsTheSame(control, test);
+            var result = XmlComparison.XmlComparer.AreXMLDocumentsTheSame(control, test, filters);
             Assert.AreEqual(false, result);
         }
 
         [Test]
-        public void CommentsShouldBeMarkedAsDifferent()
+        public void CheckToSeeIfWeCanIgnoreComments()
         {
             string test = LoadXmlIntoStringFromFile(@"SampleFiles\MessagesComments.xml");
             string control = LoadXmlIntoStringFromFile(@"SampleFiles\Messages.xml");
-            var result = XmlComparison.XmlComparer.AreXMLDocumentsTheSame(control, test);
-            Assert.AreEqual(false, result);
-        }
-
-        [Test]
-        public void CheckToSeeIfTheSameIgnoringComments()
-        {
-            string test = LoadXmlIntoStringFromFile(@"SampleFiles\MessagesComments.xml");
-            string control = LoadXmlIntoStringFromFile(@"SampleFiles\Messages.xml");
-            var result = XmlComparison.XmlComparer.AreXMLDocumentsTheSame(control, test);
+            filters.Add(XMLFilters.Comments);
+            var result = XmlComparison.XmlComparer.AreXMLDocumentsTheSame(control, test, filters);
             Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public void CommentsShouldComeBackAsDifferent()
+        {
+            string test = LoadXmlIntoStringFromFile(@"SampleFiles\MessagesComments.xml");
+            string control = LoadXmlIntoStringFromFile(@"SampleFiles\Messages.xml");
+            var result = XmlComparison.XmlComparer.AreXMLDocumentsTheSame(control, test, filters);
+            Assert.AreEqual(false, result);
         }
 
 
