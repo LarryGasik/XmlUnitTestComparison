@@ -11,12 +11,12 @@ namespace XmlComparisonTests
     [TestFixture()]
     public class XmlComparerTests
     {
-        private List<XMLFilters> filters;
+        private List<XmlFilters> filters;
 
         [SetUp]
         public void SetUp()
         {
-            filters = new List<XMLFilters>();
+            filters = new List<XmlFilters>();
 
         }
 
@@ -44,7 +44,7 @@ namespace XmlComparisonTests
         {
             string test = LoadXmlIntoStringFromFile(@"SampleFiles\MessagesComments.xml");
             string control = LoadXmlIntoStringFromFile(@"SampleFiles\Messages.xml");
-            filters.Add(XMLFilters.Comments);
+            filters.Add(XmlFilters.Comments);
             var result = XmlComparison.XmlComparer.AreXMLDocumentsTheSame(control, test, filters);
             Assert.AreEqual(true, result);
         }
@@ -56,6 +56,27 @@ namespace XmlComparisonTests
             string control = LoadXmlIntoStringFromFile(@"SampleFiles\Messages.xml");
             var result = XmlComparison.XmlComparer.AreXMLDocumentsTheSame(control, test, filters);
             Assert.AreEqual(false, result);
+        }
+
+        [Test]
+        public void WhiteSpaceShouldComeBackAsDifferent()
+        {
+            ///Note that the white space is within the nodes and not the structure of the file.
+            string test = LoadXmlIntoStringFromFile(@"SampleFiles\MessagesWhiteSpace.xml");
+            string control = LoadXmlIntoStringFromFile(@"SampleFiles\Messages.xml");
+            var result = XmlComparison.XmlComparer.AreXMLDocumentsTheSame(control, test, filters);
+            Assert.AreEqual(false, result);
+        }
+
+        [Test]
+        public void IgnoreWhiteSpaceFilter()
+        {
+            ///Note that the white space is within the nodes and not the structure of the file.
+            string test = LoadXmlIntoStringFromFile(@"SampleFiles\MessagesWhiteSpace.xml");
+            string control = LoadXmlIntoStringFromFile(@"SampleFiles\Messages.xml");
+            filters.Add(XmlFilters.WhiteSpace);
+            var result = XmlComparison.XmlComparer.AreXMLDocumentsTheSame(control, test, filters);
+            Assert.AreEqual(true, result);
         }
 
 
@@ -70,7 +91,5 @@ namespace XmlComparisonTests
             doc.Load(filepath);
             return doc.InnerXml;
         }
-
-
     }
 }

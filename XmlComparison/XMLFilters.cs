@@ -4,9 +4,10 @@ using System.Text;
 
 namespace XmlComparison
 {
-    public enum XMLFilters
+    public enum XmlFilters
     {
         Comments,
-        Casing
+        Casing,
+        WhiteSpace
     }
 }
