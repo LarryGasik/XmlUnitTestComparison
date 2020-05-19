@@ -79,6 +79,18 @@ namespace XmlComparisonTests
             Assert.AreEqual(true, result);
         }
 
+        [Test]
+        public void MultipleFilters()
+        {
+            ///Note that the white space is within the nodes and not the structure of the file.
+            string test = LoadXmlIntoStringFromFile(@"SampleFiles\MessagesCommentsWhitespace.xml");
+            string control = LoadXmlIntoStringFromFile(@"SampleFiles\Messages.xml");
+            filters.Add(XmlFilters.WhiteSpace);
+            filters.Add(XmlFilters.Comments);
+            var result = XmlComparison.XmlComparer.AreXMLDocumentsTheSame(control, test, filters);
+            Assert.AreEqual(true, result);
+        }
+
 
         /// <summary>
         /// Load XML File and get a string back for comparison
